@@ -1278,10 +1278,12 @@ import lime.math.Vector2;
 		{
 			gl.enable(0x9285); // BLEND_ADVANCED_COHERENT_KHR
 		}
+		#if !switch
 		else if (__usingComplexBlend)
 		{
 			gl.blendBarrier();
 		}
+		#end
 
 		gl.drawElements(gl.TRIANGLES, count, gl.UNSIGNED_SHORT, firstIndex * 2);
 
@@ -2102,10 +2104,12 @@ import lime.math.Vector2;
 		{
 			gl.enable(0x9285); // BLEND_ADVANCED_COHERENT_KHR
 		}
+		#if !switch
 		else if (__usingComplexBlend)
 		{
 			gl.blendBarrier();
 		}
+		#end
 
 		gl.drawArrays(gl.TRIANGLES, firstIndex, count);
 
@@ -2772,7 +2776,9 @@ import lime.math.Vector2;
 
 	@:noCompletion private inline function __glBlendBarrier():Void
 	{
+		#if !switch
 		gl.blendBarrier();
+		#end
 	}
 
 	// Get & Set Methods
