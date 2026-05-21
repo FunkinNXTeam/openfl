@@ -1278,7 +1278,7 @@ import lime.math.Vector2;
 		{
 			gl.enable(0x9285); // BLEND_ADVANCED_COHERENT_KHR
 		}
-		#if !switch
+		#if (!switch && !vita)
 		else if (__usingComplexBlend)
 		{
 			gl.blendBarrier();
@@ -2104,7 +2104,7 @@ import lime.math.Vector2;
 		{
 			gl.enable(0x9285); // BLEND_ADVANCED_COHERENT_KHR
 		}
-		#if !switch
+		#if (!switch && !vita)
 		else if (__usingComplexBlend)
 		{
 			gl.blendBarrier();
@@ -2776,7 +2776,7 @@ import lime.math.Vector2;
 
 	@:noCompletion private inline function __glBlendBarrier():Void
 	{
-		#if !switch
+		#if (!switch && !vita)
 		gl.blendBarrier();
 		#end
 	}

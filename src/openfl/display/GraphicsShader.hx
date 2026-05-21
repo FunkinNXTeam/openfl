@@ -103,5 +103,14 @@ class GraphicsShader extends Shader
 	public function new(code:ByteArray = null)
 	{
 		super(code);
+		#if vita
+		glVertexSource = glVertexSource
+			.split("uniform bool ").join("uniform int ")
+			.split("if (openfl_HasColorTransform)").join("if (openfl_HasColorTransform != 0)");
+		glFragmentSource = glFragmentSource
+			.split("uniform bool ").join("uniform int ")
+			.split("if (openfl_HasColorTransform)").join("if (openfl_HasColorTransform != 0)")
+			.split("mat4 (0)").join("mat4 (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)");
+		#end
 	}
 }
